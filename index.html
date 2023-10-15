@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Booking</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/a36a88f87c.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+
+    <!--Booking section-->
+    <section id="bookingSec">
+
+        <br>
+        <br>
+        <h1 class="bookHead"><i class="fa-solid fa-bus"></i> Booking Details</h1> <br>
+        <p class="bookPara">Book your ticket, Enjoy your journey</p>
+        <form id="form" name="form">
+
+
+            <!--from nd to-->
+            <div>
+                <br> <br>
+                <h5 id="direction"><i class="fa-solid fa-road"></i> Select your direction:</h5>
+
+                <div class="from-to-date">
+                    <select id="from">
+                        <option value="" class="option-one"> Leaving from
+                        </option>
+                        <option value="Chennai"> Chennai
+                        </option>
+                        <option value="Salem"> Salem
+                        </option>
+                        <option value="Banglore"> Banglore
+                        </option>
+                        <option value="Trichy"> Coimbatore
+                        </option>
+                    </select>
+
+                    <select id="to">
+                        <option value="" class="option-one">to</option>
+                        <option value="Trichy"> Trichy
+                        </option>
+                        <option value="Chennai"> Chennai
+                        </option>
+                        <option value="Banglore"> Banglore
+                        </option>
+                        <option value="Coimbatore"> Coimbatore
+                        </option>
+                    </select>
+
+                    <input type="date" id="date" class="option-one">
+
+                    <select name="tickets" onchange="totalPrice(this.value)" required id="ticketTotal">
+                        <option value="" disabled selected class="option-one">Choose no of tickets</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+
+                    <input type="text" id="total" placeholder="total price of tickets" class="option-one">
+
+                    <button type="submit" id="booked2" onclick="booking(), gotopass()">Submit</button>
+                </div>
+            </div>
+    </section>
+
+
+    <!--passanger info-->
+
+    <section id="passanger">
+        <div>
+            <form method="post">
+                <br>
+                <br>
+                <h1 id="passHead"><i class="fa-solid fa-person-walking-luggage"></i> passanger Details
+                </h1>
+                <br>
+                <h3 id="passh3">Enter the Information about you</h3>
+                <br><br>
+
+                <div class="passanger-div">
+                    <br>
+                    <br>
+
+                    <label for="passangername" id="passLab">Name of passanger:</label>
+                    <br>
+                    <input type="text" id="passangername">
+
+                    <br>
+                    <br>
+
+                    <label for="age" id="ageLab">Age:</label>
+                    <br>
+                    <input type="number" id="age">
+
+                    <br>
+                    <br>
+
+                    <label for="male" id="genLab">Male:</label>
+                    <input type="radio" id="male" name="gender" active>
+                    <label for="female" id="genLab">Female:</label>
+                    <input type="radio" id="female" name="gender">
+
+                    <br>
+                    <br>
+                    <!-- Button-->
+                    <div class="pass-btn">
+                        <!-- <button type="submit" id="booked" onclick="add_data()">Add user data</button> -->
+                        <button type="submit" id="booked1" onclick="gotopay()">Submit</button>
+                        <!-- <button type="submit" id="booked" onclick="event.preventDefault(); pushData();">ADD</button> -->
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+        </div>
+    </section>
+
+
+
+
+
+    <!--payment section-->
+
+    <section id="paymentpage">
+
+        <div id="payDiv">
+
+            <span><img src="image/online.png" alt="" id="online">
+                <span>
+                    <h1 id="tophead">Payment Details</h1>
+                </span>
+            </span>
+
+            <h3 id="topheadh3">Choose any one payment</h3>
+            <div class="wrapper">
+
+
+                <!-- Accordion Heading One -->
+                <div class="parent-tab">
+                    <input type="radio" name="tab" id="tab-1" checked>
+                    <label for="tab-1">
+                        <span><img src="image/upi.png" alt="" id="gp"></span> <span class="acc-2"
+                            style="margin-left: -300px;">
+                            UPI Payment</span>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </label>
+                    <div class="content">
+                        <p>
+                        <h2 id="heading">Enter your UPI ID</h2>
+                        <h4 id="heading2">UPI ID</h4>
+                        <input type="text" id="upitext">
+                        <br>
+                        <br>
+                        <b for="upi" id="upiLab">Extra charge: <span>+ Rs.5</span></b>
+                        <input type="number" id="upi">
+                        <br>
+                        <br>
+                        <button onclick="payment1()" id="pay" name="pay">Pay</button>
+                        <br>
+
+                        <p id="para">A collect request will be sent to this UPI ID</p>
+                    </div>
+                </div>
+
+
+                <!-- Accordion Heading Two -->
+                <div class="parent-tab">
+                    <input type="radio" name="tab" id="tab-2">
+                    <label for="tab-2">
+                        <img src="image/cc.png" alt="" id="cc"></span> <span class="acc-2" id="credit-card">Credit
+                            Card Payment </span>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </label>
+                    <div class="content">
+                        <p>
+                        <h2 id="heading">Credit Card Number</h2>
+                        <h4 id="heading2">Enter Card Number</h4>
+                        <input type="number" id="cardtext">
+
+                        <h4 id="heading2">Expiry Date</h4>
+                        <input type="date" id="cardtext">
+
+                        <h4 id="heading2">CVV</h4>
+                        <input type="number" id="cardtext">
+                        <p id="paracr">3-digit code behind your card</p>
+
+                        <h4 id="h4cr">Your cars information is safe and scure with us</h4>
+
+                        <b for="debit" id="creditLab">Extra charge: <span> + Rs.2</span></b>
+                        <input type="number" id="credit">
+                        <br><br>
+                        <button onclick="pay()" id="pay" name="pay">Pay</button>
+                        </p>
+                    </div>
+                </div>
+
+
+                <!-- Accordion Heading three -->
+                <div class="parent-tab">
+                    <input type="radio" name="tab" id="tab-3">
+                    <label for="tab-3">
+                        <img src="image/card.png" alt="" id="cc"></span> <span class="acc-2"
+                            style="margin-left:-300px;">Debit
+                            Card Payment </span>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </label>
+                    <div class="content">
+                        <p>
+                        <h2 id="heading"> Debit Card Number</h2>
+                        <h4 id="heading2">Enter Card Number</h4>
+                        <input type="number" id="cardtext">
+
+                        <h4 id="heading2">Expiry Date</h4>
+                        <input type="date" id="cardtext">
+
+                        <h4 id="heading2">CVV</h4>
+                        <input type="number" id="cardtext">
+                        <p id="paracr">3-digit code behind your card</p>
+
+                        <h4 id="h4cr">Your cars information is safe and scure with us</h4>
+
+                        <p for="debit" id="creditLab">Extra charge: <span> + Rs.4</span></p>
+
+                        <input type="number" id="credit">
+                        <br><br>
+                        <button onclick="pay()" id="pay" name="pay">Pay</button>
+                        </p>
+                    </div>
+                </div>
+
+
+                <!-- Accordion Heading Four -->
+                <div class="parent-tab">
+                    <input type="radio" name="tab" id="tab-6">
+                    <label for="tab-6">
+                        <img src="image/wlt.png" alt="" id="cc"></span> <span class="acc-2"
+                            style="margin-left:-320px;">Wallet
+                            Payment</span>
+                        <div class="icon"><i class="fas fa-plus"></i></div>
+                    </label>
+                    <div class="content">
+                        <p>
+                        <div class="radiobtn"> <i class="fa-solid fa-money-check"></i> <b>paytm</b>
+                            <input type="radio" id="walLab" id="radios1" name="pays" style="margin-left:  250px;">
+                        </div>
+
+                        <br>
+                        <br>
+                        <div class="radiobtn"> <i class="fa-brands fa-google-pay"></i> <b>Google
+                                Pay</b>
+                            <input type="radio" id="walLab" id="radios2" name="pays" style="margin-left:  216px;">
+                        </div><br>
+                        <br>
+
+                        <div class="radiobtn"> <i class="fa-brands fa-paypal"></i> <b> Mobikwik|
+                                ZIP(Paylater)</b>
+                            <input type="radio" id="walLab" id="radios3" name="pays" style="margin-left:  131px;">
+                        </div>
+                        <br><br>
+
+                        <p for="wallet" id="walletLab">Extra charge: <span> + Rs.0</span> </p>
+                        <input type="number" id="wallet">
+                        <br>
+                        <button onclick="pay()" id="pay" name="pay">Pay</button>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+    <script src="script.js"></script>
+
+    <script>
+        console.log(JSON.parse(localStorage.getItem("myObject")));
+        localStorage.clear();
+
+        console.log(JSON.parse(localStorage.getItem("myObject1")));
+        localStorage.clear();
+
+        function pushData() {
+            const Data = [];
+            const passanger_Details = {
+
+
+                name: document.getElementById("passangername").value,
+                Age: document.getElementById("age").value,
+                gender_male: document.getElementById("male").value,
+                gender_female: document.getElementById("female").value
+
+            }
+
+            Data.push(passanger_Details);
+
+            localStorage.getItem("task", JSON.stringify(passanger_Details));
+
+            console.log(passanger_Details)
+
+        }
+
+        var user = sessionStorage.getItem("User_Informations");
+        console.log(user);
+
+
+
+    </script>
+</body>
+
+</html>
